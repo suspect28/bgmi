@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TDM 1v1 • BGMI • Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold1: #ffd700;
+      --gold2: #fffbe6;
+      --gold3: #ffb347;
+      --neon-green: #00ffae;
+      --accent: #ffb347;
+      --accent2: #ff7a3b;
+      --glass: rgba(0,0,0,0.65);
+      --muted: rgba(255,255,255,0.85);
+      --bg-overlay: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
+      --card-bg: rgba(20,20,28,0.97);
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 12px 40px rgba(0,0,0,0.7);
+      --glow: 0 0 18px 4px #ffd70099;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background:#000;
+      color:#fff;
+      min-height:100vh;
+      background-image: 
+        linear-gradient(180deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.95) 100%),
+        url('https://wallpapercave.com/wp/wp9152860.jpg');
+      background-size:cover;
+      background-position:center center;
+      background-attachment:fixed;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 10px;
+      position:relative;
+      z-index:1;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:var(--bg-overlay);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .card{
+      position:relative;
+      z-index:2;
+      width:420px;
+      max-width:98vw;
+      margin:0 auto;
+      padding:38px 32px 28px 32px;
+      border-radius:22px;
+      background:var(--card-bg);
+      box-shadow:var(--shadow), var(--glow);
+      border:2.5px solid var(--border);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0;
+    }
+
+    h1{
+      margin:0 0 8px 0;
+      font-size:2.3rem;
+      letter-spacing:1.5px;
+      font-family:'Orbitron', 'Poppins', Arial, sans-serif;
+      font-weight:700;
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+    .gold-shine {
+      background: linear-gradient(90deg, var(--gold2) 10%, var(--gold1) 40%, var(--gold3) 60%, var(--gold2) 90%);
+      background-size: 300% 100%;
+      animation: goldShine 2.5s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--gold1);
+      text-shadow: 0 0 18px #ffd70099, 0 2px 8px #ffb34799;
+      font-weight:900;
+      letter-spacing:2px;
+    }
+    @keyframes goldShine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .subtitle{
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:1.1rem;
+      font-weight:400;
+      text-align:center;
+      text-shadow:0 1px 8px rgba(0,0,0,0.25);
+    }
+
+    .chips{
+      display:flex;
+      gap:10px;
+      margin-bottom:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .chip{
+      background:linear-gradient(90deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04));
+      padding:8px 18px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      color:var(--accent2);
+      border:1.5px solid var(--border);
+      box-shadow:0 2px 8px rgba(0,0,0,0.13);
+      letter-spacing:0.5px;
+      text-shadow:0 1px 6px #0008;
+      text-transform:uppercase;
+    }
+
+    .fees{
+      margin-bottom:20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:12px;
+      width:100%;
+    }
+    .fee{
+      background:rgba(255,255,255,0.06);
+      padding:13px 10px;
+      border-radius:12px;
+      border:2px solid var(--border);
+      transition:box-shadow 0.2s, border 0.2s, background 0.2s;
+      box-shadow:0 2px 10px rgba(0,0,0,0.10);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      position:relative;
+    }
+    .fee input[type=radio]{margin-right:10px;}
+    .fee strong{
+      display:block;
+      font-size:19px;
+      margin-bottom:2px;
+      color:var(--gold1);
+      text-shadow: 0 0 8px #ffecb3, 0 1px 0 #000;
+      font-family:'Orbitron', 'Poppins', Arial, sans-serif;
+      letter-spacing:1px;
+    }
+    .fee .win{
+      color:var(--neon-green);
+      font-weight:900;
+      font-size:15px;
+      text-shadow: 0 0 8px #00ffae88, 0 1px 0 #000;
+    }
+    .fee .muted{font-size:13px;}
+    .fee input[type=radio]{
+      appearance:none;
+      width:18px;height:18px;
+      border-radius:50%;
+      border:2px solid #fff;
+      background:transparent;
+      display:inline-block;
+      outline:none;
+      transition:border 0.2s;
+      margin:0;
+    }
+    .fee input[type=radio]:checked{
+      background:var(--white);
+      border-color:var(--accent2);
+      box-shadow:0 0 0 2px #fff;
+    }
+    .fee:hover, .fee input[type=radio]:focus{
+      border:2px solid var(--accent2);
+      background:rgba(255,186,59,0.08);
+      box-shadow:0 4px 18px rgba(255,122,59,0.09);
+    }
+
+    form{
+      margin-bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:13px;
+      background:rgba(255,255,255,0.03);
+      padding:18px 14px 10px 14px;
+      border-radius:14px;
+      border:1.5px solid var(--border);
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      width:100%;
+      animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .form-title{
+      font-size:1.2rem;
+      font-weight:700;
+      color:var(--accent2);
+      margin-bottom:6px;
+      text-align:center;
+      letter-spacing:1px;
+      text-shadow:0 1px 6px #0007;
+    }
+    input[type=text], input[type=tel]{
+      padding:13px 14px;
+      border-radius:8px;
+      border:2px solid var(--border);
+      background:rgba(255,255,255,0.10);
+      color:#fff;
+      font-size:16px;
+      font-weight:500;
+      outline:none;
+      transition:border 0.2s, background 0.2s;
+      box-shadow:0 1px 6px #0002;
+    }
+    input[type=text]:focus, input[type=tel]:focus{
+      border:2px solid var(--accent2);
+      background:rgba(255,255,255,0.18);
+    }
+    ::placeholder{color:rgba(255,255,255,0.55);font-weight:400;}
+
+    .score{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .score .pill{
+      background:rgba(255,255,255,0.10);
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:600;
+      color:var(--accent2);
+      border:1.5px solid var(--border);
+      box-shadow:0 1px 6px rgba(0,0,0,0.10);
+      text-shadow:0 1px 6px #0007;
+    }
+    .score strong{
+      color:var(--gold1);
+      text-shadow: 0 0 8px #ffecb3, 0 1px 0 #000;
+      font-family:'Orbitron', 'Poppins', Arial, sans-serif;
+      letter-spacing:1px;
+    }
+    .score .pill:last-child strong{
+      color:var(--neon-green);
+      text-shadow: 0 0 8px #00ffae88, 0 1px 0 #000;
+    }
+    .score button{
+      margin-left:auto;
+    }
+
+    .btn{
+      padding:13px 22px;
+      border-radius:10px;
+      border:0;
+      font-weight:800;
+      cursor:pointer;
+      font-size:17px;
+      transition:background 0.18s, color 0.18s, box-shadow 0.18s;
+      background:linear-gradient(90deg,var(--gold1), var(--accent2));
+      color:#120700;
+      letter-spacing:0.5px;
+      border:2px solid var(--accent2);
+      box-shadow:0 4px 16px rgba(255,122,59,0.13);
+      text-shadow:0 1px 6px #fff7;
+      margin-top:10px;
+      width:100%;
+      font-family:'Orbitron', 'Poppins', Arial, sans-serif;
+      text-transform:uppercase;
+    }
+    .btn:hover{
+      background:linear-gradient(90deg,var(--accent2), var(--gold1));
+      color:#fff;
+      box-shadow:0 6px 24px rgba(255,122,59,0.18);
+    }
+
+    .rules{
+      margin-top:18px;
+      background:rgba(0,0,0,0.38);
+      padding:16px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      box-shadow:0 1px 6px rgba(0,0,0,0.09);
+      animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
+      width:100%;
+      max-width:420px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .rules h4{margin:0 0 10px 0;font-size:20px;color:var(--gold1);}
+    .rules ol{margin:0 0 0 18px;color:var(--muted);font-size:15px;line-height:1.7;}
+
+    footer{
+      position:fixed;
+      left:16px;
+      bottom:12px;
+      color:rgba(255,255,255,0.75);
+      font-size:15px;
+      letter-spacing:0.2px;
+      z-index:10;
+      text-shadow:0 1px 6px rgba(0,0,0,0.18);
+      font-weight:600;
+      background:rgba(0,0,0,0.25);
+      padding:6px 18px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      box-shadow:0 1px 6px rgba(0,0,0,0.10);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(40px);}
+      to { opacity:1; transform:translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px);}
+      to { opacity:1; transform:translateY(0);}
+    }
+    @media (max-width:600px){
+      .card, .rules{padding:16px 5vw;}
+      .card{width:98vw;}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-label="BGMI team death match background">
+    <div class="card" role="main">
+      <h1><span class="gold-shine">TDM • 1v1</span></h1>
+      <div class="subtitle">Register for <b>Team Death Match</b> 1v1 — entry fees with guaranteed win amounts.<br>Organizer will contact you on WhatsApp.</div>
+
+      <div class="chips">
+        <div class="chip">Mode: TDM</div>
+        <div class="chip">Format: 1v1</div>
+        <div class="chip">Map: Team Death Match</div>
+      </div>
+
+      <div class="fees" aria-hidden="false">
+        <label class="fee radio">
+          <input type="radio" name="fee" value="50" data-win="90" checked>
+          <div>
+            <strong>₹50</strong>
+            <div class="muted">Win: <span class="win">₹90</span></div>
+          </div>
+        </label>
+        <label class="fee radio">
+          <input type="radio" name="fee" value="80" data-win="140">
+          <div>
+            <strong>₹80</strong>
+            <div class="muted">Win: <span class="win">₹140</span></div>
+          </div>
+        </label>
+        <label class="fee radio">
+          <input type="radio" name="fee" value="100" data-win="180">
+          <div>
+            <strong>₹100</strong>
+            <div class="muted">Win: <span class="win">₹180</span></div>
+          </div>
+        </label>
+        <label class="fee radio">
+          <input type="radio" name="fee" value="150" data-win="260">
+          <div>
+            <strong>₹150</strong>
+            <div class="muted">Win: <span class="win">₹260</span></div>
+          </div>
+        </label>
+        <label class="fee radio">
+          <input type="radio" name="fee" value="200" data-win="350">
+          <div>
+            <strong>₹200</strong>
+            <div class="muted">Win: <span class="win">₹350</span></div>
+          </div>
+        </label>
+      </div>
+
+      <form id="regForm" aria-label="Registration form" autocomplete="off">
+        <div class="form-title">Join the Battle!</div>
+        <input id="pname" type="text" placeholder="Your in-game name (max 20 chars)" required maxlength="20" autocomplete="off">
+        <input id="pphone" type="tel" placeholder="Contact number (with country code, e.g. +91XXXXXXXXXX)" required autocomplete="off">
+
+        <div class="score">
+          <div class="pill">Selected: <strong id="selFee">₹50</strong></div>
+          <div class="pill">Winning: <strong id="selWin">₹90</strong></div>
+        </div>
+        <button type="button" id="registerBtn" class="btn">Register & Message via WhatsApp</button>
+      </form>
+
+      <div class="rules" aria-label="Rules">
+        <h4>Rules</h4>
+        <ol>
+          <li>Record your POV.</li>
+          <li>Give your Location during the match.</li>
+          <li>No sliding allowed.</li>
+          <li>No grenades. Stun grenades are allowed.</li>
+        </ol>
+      </div>
+    </div>
+    <footer>BGMI Team Death Match • TDM • 1v1</footer>
+  </section>
+
+  <script>
+    // ---------- CONFIG ----------
+    // Replace this with your real WhatsApp number (include country code, no '+' or spaces) e.g. 919876543210
+    const ORGANIZER_WA_NUMBER = '919550732174'; // <<< REPLACE THIS
+
+    // ---------- UI bindings ----------
+    const feeRadios = document.querySelectorAll('input[name="fee"]');
+    const selFee = document.getElementById('selFee');
+    const selWin = document.getElementById('selWin');
+    const pname = document.getElementById('pname');
+    const pphone = document.getElementById('pphone');
+    const registerBtn = document.getElementById('registerBtn');
+
+    function updateSelected(){
+      const sel = document.querySelector('input[name="fee"]:checked');
+      selFee.textContent = '₹' + sel.value;
+      selWin.textContent = '₹' + sel.dataset.win;
+    }
+    feeRadios.forEach(r=>r.addEventListener('change',updateSelected));
+    updateSelected();
+
+    // Helper: sanitize name to slug (for redirecter naming)
+    function slugify(name){
+      return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    }
+
+    // Save registration to localStorage
+    function saveRegistration(obj){
+      const key = 'tdm_1v1_regs_v1';
+      const data = JSON.parse(localStorage.getItem(key) || '[]');
+      data.push(obj);
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    // Register button behaviour
+    registerBtn.addEventListener('click', ()=>{
+      const name = (pname.value || '').trim();
+      const phone = (pphone.value || '').trim();
+      if(!name || !phone){ alert('Please enter name and contact number.'); return; }
+      const sel = document.querySelector('input[name="fee"]:checked');
+      const fee = Number(sel.value);
+      const win = Number(sel.dataset.win);
+
+      // create a redirect slug
+      const now = new Date();
+      const y = now.getFullYear().toString();
+      const mm = String(now.getMonth()+1).padStart(2,'0');
+      const dd = String(now.getDate()).padStart(2,'0');
+      const hh = String(now.getHours()).padStart(2,'0');
+      const mins = String(now.getMinutes()).padStart(2,'0');
+      const timestamp = y+mm+dd+hh+mins;
+      const slug = `tdm-1v1-${fee}-${slugify(name)}-${timestamp}`;
+
+      const reg = {name, phone, fee, win, slug, created: (new Date()).toISOString()};
+      saveRegistration(reg);
+
+      // prefilled WhatsApp message to ORGANIZER
+      const msg = encodeURIComponent(`Hello, I ( ${name} ) have registered for TDM 1v1.\nFee: ₹${fee}\nWinning: ₹${win}\nContact: ${phone}\nSlug: ${slug}\nPlease confirm the slot.`);
+      const waLink = `https://wa.me/${ORGANIZER_WA_NUMBER}?text=${msg}`;
+
+      // open WhatsApp and show a small confirmation
+      window.open(waLink, '_blank');
+      alert('Registered! A WhatsApp message to the organizer was opened. Keep this slug:\n' + slug);
+
+      // clear form
+      pname.value = '';
+      pphone.value =
