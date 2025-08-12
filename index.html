@@ -156,7 +156,7 @@
       display:block;
       font-size:19px;
       margin-bottom:2px;
-      color:var(--gold1);
+      color:#fff; /* White color for fee */
       text-shadow: 0 0 8px #ffecb3, 0 1px 0 #000;
       font-family:'Orbitron', 'Poppins', Arial, sans-serif;
       letter-spacing:1px;
@@ -180,7 +180,7 @@
       margin:0;
     }
     .fee input[type=radio]:checked{
-      background:var(--white);
+      background:var(--gold1);
       border-color:var(--accent2);
       box-shadow:0 0 0 2px #fff;
     }
@@ -412,11 +412,9 @@
   </section>
 
   <script>
-    // ---------- CONFIG ----------
-    // Replace this with your real WhatsApp number (include country code, no '+' or spaces) e.g. 919876543210
-    const ORGANIZER_WA_NUMBER = '919550732174'; // <<< REPLACE THIS
+    // WhatsApp number (country code + number, no + or spaces)
+    const ORGANIZER_WA_NUMBER = '91 9550732174';
 
-    // ---------- UI bindings ----------
     const feeRadios = document.querySelectorAll('input[name="fee"]');
     const selFee = document.getElementById('selFee');
     const selWin = document.getElementById('selWin');
@@ -432,20 +430,10 @@
     feeRadios.forEach(r=>r.addEventListener('change',updateSelected));
     updateSelected();
 
-    // Helper: sanitize name to slug (for redirecter naming)
     function slugify(name){
       return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
     }
 
-    // Save registration to localStorage
-    function saveRegistration(obj){
-      const key = 'tdm_1v1_regs_v1';
-      const data = JSON.parse(localStorage.getItem(key) || '[]');
-      data.push(obj);
-      localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    // Register button behaviour
     registerBtn.addEventListener('click', ()=>{
       const name = (pname.value || '').trim();
       const phone = (pphone.value || '').trim();
@@ -464,17 +452,13 @@
       const timestamp = y+mm+dd+hh+mins;
       const slug = `tdm-1v1-${fee}-${slugify(name)}-${timestamp}`;
 
-      const reg = {name, phone, fee, win, slug, created: (new Date()).toISOString()};
-      saveRegistration(reg);
-
       // prefilled WhatsApp message to ORGANIZER
       const msg = encodeURIComponent(`Hello, I ( ${name} ) have registered for TDM 1v1.\nFee: ₹${fee}\nWinning: ₹${win}\nContact: ${phone}\nSlug: ${slug}\nPlease confirm the slot.`);
-      const waLink = `https://wa.me/${ORGANIZER_WA_NUMBER}?text=${msg}`;
+      const waLink = `https://wa.me/${9550732174}?text=${msg}`;
 
       // open WhatsApp and show a small confirmation
-      window.open(waLink, '_blank');
-      alert('Registered! A WhatsApp message to the organizer was opened. Keep this slug:\n' + slug);
-
-      // clear form
-      pname.value = '';
-      pphone.value =
+      window.location.href = waLink;
+    });
+  </script>
+</body>
+</html>
