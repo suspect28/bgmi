@@ -387,7 +387,20 @@
       </div>
 
       <form id="regForm" aria-label="Registration form" autocomplete="off">
-        <div class="form-title">Join the Battle!</div>
+        <div class="form-title">
+          Choose Your Gun:
+          <div style="margin:10px 0 16px 0; display:flex; gap:18px; justify-content:center;">
+            <label style="cursor:pointer; font-weight:700;">
+              <input type="radio" name="gun" value="M416" checked style="accent-color:#ffd700; margin-right:6px;">
+              <span style="color:#ffd700;">M416</span>
+            </label>
+            <label style="cursor:pointer; font-weight:700;">
+              <input type="radio" name="gun" value="M24" style="accent-color:#ffd700; margin-right:6px;">
+              <span style="color:#ffd700;">M24</span>
+            </label>
+          </div>
+          Join the Battle!
+        </div>
         <input id="pname" type="text" placeholder="Your in-game name (max 20 chars)" required maxlength="20" autocomplete="off">
         <input id="pphone" type="tel" placeholder="Contact number (with country code, e.g. +91XXXXXXXXXX)" required autocomplete="off">
 
@@ -413,7 +426,7 @@
 
   <script>
     // WhatsApp number (country code + number, no + or spaces)
-    const ORGANIZER_WA_NUMBER = '91 9550732174';
+    const ORGANIZER_WA_NUMBER = '9550732174';
 
     const feeRadios = document.querySelectorAll('input[name="fee"]');
     const selFee = document.getElementById('selFee');
@@ -437,6 +450,7 @@
     registerBtn.addEventListener('click', ()=>{
       const name = (pname.value || '').trim();
       const phone = (pphone.value || '').trim();
+      const gun = document.querySelector('input[name="gun"]:checked').value;
       if(!name || !phone){ alert('Please enter name and contact number.'); return; }
       const sel = document.querySelector('input[name="fee"]:checked');
       const fee = Number(sel.value);
@@ -453,8 +467,8 @@
       const slug = `tdm-1v1-${fee}-${slugify(name)}-${timestamp}`;
 
       // prefilled WhatsApp message to ORGANIZER
-      const msg = encodeURIComponent(`Hello, I ( ${name} ) have registered for TDM 1v1.\nFee: ₹${fee}\nWinning: ₹${win}\nContact: ${phone}\nSlug: ${slug}\nPlease confirm the slot.`);
-      const waLink = `https://wa.me/${9550732174}?text=${msg}`;
+      const msg = encodeURIComponent(`Hello, I ( ${name} ) have registered for TDM 1v1.\nGun: ${gun}\nFee: ₹${fee}\nWinning: ₹${win}\nContact: ${phone}\nSlug: ${slug}\nPlease confirm the slot.`);
+      const waLink = `https://wa.me/${ORGANIZER_WA_NUMBER}?text=${msg}`;
 
       // open WhatsApp and show a small confirmation
       window.location.href = waLink;
